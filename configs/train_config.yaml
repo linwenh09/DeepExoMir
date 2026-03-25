@@ -1,0 +1,51 @@
+# DeepExoMir Training Configuration -- Model v7
+# Key changes from v6:
+#   - Focal loss gamma: 2.0 to 1.5 (better calibration, fix F1/MCC instability)
+#   - Structural features ENABLED (pre-computed, no longer zeros)
+#   - Batch size reduced to 128 for contact map memory
+#   - Accumulation steps doubled to 16 to keep effective batch = 2048
+
+data:
+  data_dir: data/processed
+  batch_size: 128           # v7: reduced from 256 for contact map memory
+  num_workers: 0
+
+training:
+  epochs: 50
+  batch_size: 128           # v7: reduced from 256
+  accumulation_steps: 16    # v7: doubled to 16, effective batch = 128*16 = 2048
+  learning_rate: 1.0e-4     # same as v6
+  weight_decay: 5.0e-4      # same as v6
+  warmup_steps: 1000        # same as v6
+  scheduler: cosine_with_warmup
+  gradient_clip_norm: 1.0
+  backbone_lr_scale: 0.1
+  ema_decay: 0.9995         # same as v6
+
+loss:
+  type: focal
+  gamma: 1.5               # v7: reduced from 2.0 for better calibration
+  alpha: 0.5               # Balanced 1:1 data - equal class weighting
+  label_smoothing: 0.05
+
+regularization:
+  dropout: 0.3              # same as v6
+  attention_dropout: 0.2    # same as v6
+
+early_stopping:
+  patience: 15              # same as v6
+  monitor: val_auc
+  min_delta: 0.0005         # same as v6
+  mode: max
+
+mixed_precision:
+  enabled: true
+  dtype: float16
+
+checkpointing:
+  save_top_k: 3
+  checkpoint_dir: checkpoints/
+
+logging:
+  tensorboard_dir: logs/
+  log_every_n_steps: 50

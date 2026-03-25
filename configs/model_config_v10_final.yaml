@@ -1,0 +1,58 @@
+# DeepExoMir Model Configuration -- v10 Final
+# 6-Channel BP + Per-Token Embedding Augmentation
+# All model-level v10 improvements
+
+backbone:
+  name: "multimolecule/rinalmo-giga"
+  embed_dim: 256
+  freeze: true
+  load_backbone: false
+
+model:
+  d_model: 256
+  n_heads: 8
+  d_ff: 1024
+  n_layers: 8
+  d_conv: 4
+  expand: 2
+  cross_attn_every: 3
+  dropout: 0.2
+  attention_dropout: 0.15
+  drop_path_rate: 0.1
+  use_swiglu: true
+  max_mirna_len: 30
+  max_target_len: 50
+  backbone_feat_dim: 256
+
+structural:
+  bp_cnn_out: 128
+  bp_channels: 6
+  struct_mlp_in: 8
+  struct_mlp_out: 64
+
+contact_map:
+  enabled: true
+  proj_dim: 32
+  out_dim: 128
+
+classifier:
+  type: moe
+  n_experts: 4
+  top_k: 2
+  hidden_dim: 256
+  n_classes: 2
+  platt_scaling: true
+
+multitask:
+  enabled: true
+  w_seed: 0.3
+  w_mfe: 0.2
+  w_position: 0.2
+  w_load_balance: 0.01
+
+augmentation:
+  enabled: true
+  p_augment: 0.3
+  mutation_rate: 0.05
+  struct_noise_std: 0.1
+  emb_augment: true

@@ -1,0 +1,64 @@
+# Data (too large for git)
+data/
+*.npy
+*.npz
+*.parquet
+*.bw
+*.bigwig
+
+# Model checkpoints (too large)
+checkpoints/
+*.pt
+*.pth
+
+# Embeddings cache
+embeddings_cache*/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temp scripts
+scripts/_*.py
+*.tmp
+
+# TensorBoard logs
+logs/
+
+# miRBench cache
+.miRBench/
+
+# Zenodo archive
+*.zip
+
+# Results (large)
+results/
+
+# Docs (internal)
+docs/
+
+# IDE / tool config
+.claude/
+CLAUDE.md
+
+# MEMORY
+MEMORY.md

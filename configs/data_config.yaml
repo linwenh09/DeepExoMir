@@ -1,0 +1,45 @@
+# DeepExoMir Data Configuration
+
+paths:
+  raw_dir: data/raw
+  processed_dir: data/processed
+  embeddings_dir: data/embeddings_cache
+
+databases:
+  mirbase:
+    version: "22.1"
+    url: "https://www.mirbase.org/download/mature.fa"
+    filename: "mature.fa"
+  mirtarbase:
+    version: "2025"
+    filename: "miRTarBase_2025.xlsx"
+  exocarta:
+    filename: "ExoCarta_miRNA_details.txt"
+  hmdd:
+    version: "4.0"
+    filename: "HMDD_v4.txt"
+
+preprocessing:
+  species: "Homo sapiens"
+  min_evidence_types:
+    - "CLIP-Seq"
+    - "PAR-CLIP"
+    - "HITS-CLIP"
+    - "Reporter assay"
+    - "Western blot"
+    - "qRT-PCR"
+  max_mirna_len: 30
+  max_target_len: 40
+
+splitting:
+  train_ratio: 0.70
+  val_ratio: 0.15
+  test_ratio: 0.15
+  split_by: gene  # gene-level split to prevent leakage
+  random_seed: 42
+
+mirbench:
+  datasets:
+    - "AGO2_CLASH_Hejret2023"
+    - "AGO2_eCLIP_Klimentova2022"
+    - "AGO2_eCLIP_Manakov2022"

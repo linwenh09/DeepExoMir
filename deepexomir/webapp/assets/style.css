@@ -1,0 +1,383 @@
+/* ==========================================================================
+   DeepExoMir -- Custom Streamlit CSS
+   Professional biotech styling for XunLian Group (訊聯集團)
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   Root variables -- XunLian-inspired professional blues
+   -------------------------------------------------------------------------- */
+:root {
+    --primary-blue: #1a5276;
+    --primary-blue-light: #2980b9;
+    --primary-blue-lighter: #3498db;
+    --accent-teal: #16a085;
+    --accent-green: #27ae60;
+    --accent-orange: #e67e22;
+    --text-dark: #1a1a2e;
+    --text-medium: #2c3e50;
+    --text-light: #7f8c8d;
+    --bg-light: #f8f9fa;
+    --bg-card: #ffffff;
+    --border-light: #e8ecef;
+    --border-medium: #ced4da;
+    --success-green: #27ae60;
+    --warning-amber: #f39c12;
+    --error-red: #e74c3c;
+    --high-confidence: #27ae60;
+    --medium-confidence: #f39c12;
+    --low-confidence: #e74c3c;
+}
+
+/* --------------------------------------------------------------------------
+   Global typography and background
+   -------------------------------------------------------------------------- */
+.stApp {
+    font-family: "Inter", "Noto Sans TC", "Segoe UI", sans-serif;
+    background-color: var(--bg-light);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: var(--primary-blue);
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Main header styling
+   -------------------------------------------------------------------------- */
+.main-header {
+    text-align: center;
+    padding: 1.5rem 1rem 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 3px solid var(--primary-blue);
+    background: linear-gradient(
+        135deg,
+        rgba(26, 82, 118, 0.04) 0%,
+        rgba(52, 152, 219, 0.04) 100%
+    );
+    border-radius: 8px 8px 0 0;
+}
+
+.main-header h1 {
+    font-size: 2.2rem;
+    letter-spacing: 0.02em;
+    color: var(--primary-blue);
+    margin-bottom: 0.25rem;
+}
+
+.main-header .subtitle {
+    font-size: 1.05rem;
+    color: var(--text-medium);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+.main-header .intro {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.6;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* --------------------------------------------------------------------------
+   Sidebar styling
+   -------------------------------------------------------------------------- */
+section[data-testid="stSidebar"] {
+    background-color: #1a2332;
+    border-right: 1px solid #2c3e50;
+}
+
+section[data-testid="stSidebar"] .stMarkdown,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] .stCaption,
+section[data-testid="stSidebar"] p {
+    color: #d5dbe0 !important;
+}
+
+section[data-testid="stSidebar"] h1,
+section[data-testid="stSidebar"] h2,
+section[data-testid="stSidebar"] h3,
+section[data-testid="stSidebar"] h4 {
+    color: #ecf0f1 !important;
+}
+
+.sidebar-logo {
+    text-align: center;
+    padding: 0.5rem 0;
+}
+
+.sidebar-logo h2 {
+    font-size: 1.6rem;
+    letter-spacing: 0.05em;
+    color: #ecf0f1 !important;
+}
+
+/* Sidebar radio buttons */
+section[data-testid="stSidebar"] .stRadio > div {
+    gap: 0.25rem;
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label {
+    padding: 0.5rem 0.75rem;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+section[data-testid="stSidebar"] .stRadio > div > label:hover {
+    background-color: rgba(52, 152, 219, 0.15);
+}
+
+/* --------------------------------------------------------------------------
+   Metric cards
+   -------------------------------------------------------------------------- */
+div[data-testid="stMetric"] {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-light);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: box-shadow 0.2s;
+}
+
+div[data-testid="stMetric"]:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+div[data-testid="stMetric"] label {
+    color: var(--text-light);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
+    color: var(--primary-blue);
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+/* --------------------------------------------------------------------------
+   Data tables -- responsive and professional
+   -------------------------------------------------------------------------- */
+div[data-testid="stDataFrame"] {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+div[data-testid="stDataFrame"] table {
+    width: 100%;
+}
+
+div[data-testid="stDataFrame"] th {
+    background-color: var(--primary-blue) !important;
+    color: #ffffff !important;
+    font-weight: 600;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    padding: 0.75rem 0.5rem;
+    white-space: nowrap;
+}
+
+div[data-testid="stDataFrame"] td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+div[data-testid="stDataFrame"] tr:hover td {
+    background-color: rgba(52, 152, 219, 0.05);
+}
+
+/* --------------------------------------------------------------------------
+   Buttons
+   -------------------------------------------------------------------------- */
+.stButton > button[kind="primary"],
+.stButton > button[data-testid="stBaseButton-primary"] {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 8px;
+    padding: 0.6rem 1.5rem;
+    transition: all 0.2s;
+}
+
+.stButton > button[kind="primary"]:hover,
+.stButton > button[data-testid="stBaseButton-primary"]:hover {
+    background-color: var(--primary-blue-light);
+    border-color: var(--primary-blue-light);
+    box-shadow: 0 4px 12px rgba(26, 82, 118, 0.3);
+}
+
+.stDownloadButton > button {
+    border: 2px solid var(--primary-blue-lighter);
+    color: var(--primary-blue);
+    background-color: transparent;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.2s;
+}
+
+.stDownloadButton > button:hover {
+    background-color: var(--primary-blue);
+    color: #ffffff;
+}
+
+/* --------------------------------------------------------------------------
+   Tabs
+   -------------------------------------------------------------------------- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 0.25rem;
+    border-bottom: 2px solid var(--border-light);
+}
+
+.stTabs [data-baseweb="tab"] {
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px 8px 0 0;
+    font-weight: 500;
+    color: var(--text-medium);
+    transition: all 0.2s;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    background-color: rgba(52, 152, 219, 0.08);
+    color: var(--primary-blue);
+}
+
+.stTabs [aria-selected="true"] {
+    background-color: rgba(26, 82, 118, 0.1) !important;
+    color: var(--primary-blue) !important;
+    border-bottom: 3px solid var(--primary-blue) !important;
+    font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   High-confidence prediction highlights
+   -------------------------------------------------------------------------- */
+.high-confidence {
+    background-color: rgba(39, 174, 96, 0.1);
+    border-left: 4px solid var(--high-confidence);
+    padding: 0.5rem 1rem;
+    border-radius: 0 6px 6px 0;
+}
+
+.medium-confidence {
+    background-color: rgba(243, 156, 18, 0.1);
+    border-left: 4px solid var(--medium-confidence);
+    padding: 0.5rem 1rem;
+    border-radius: 0 6px 6px 0;
+}
+
+.low-confidence {
+    background-color: rgba(231, 76, 60, 0.1);
+    border-left: 4px solid var(--low-confidence);
+    padding: 0.5rem 1rem;
+    border-radius: 0 6px 6px 0;
+}
+
+/* --------------------------------------------------------------------------
+   Code blocks (duplex alignment)
+   -------------------------------------------------------------------------- */
+.stCodeBlock {
+    border: 1px solid var(--border-light);
+    border-radius: 8px;
+    font-family: "Fira Code", "Source Code Pro", "Consolas", monospace;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+/* --------------------------------------------------------------------------
+   Expanders
+   -------------------------------------------------------------------------- */
+.streamlit-expanderHeader {
+    font-weight: 600;
+    color: var(--primary-blue);
+    background-color: rgba(26, 82, 118, 0.04);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+}
+
+/* --------------------------------------------------------------------------
+   Alert boxes
+   -------------------------------------------------------------------------- */
+div[data-testid="stAlert"] {
+    border-radius: 8px;
+    border-width: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   Dividers
+   -------------------------------------------------------------------------- */
+hr {
+    border-color: var(--border-light);
+    margin: 1rem 0;
+}
+
+/* --------------------------------------------------------------------------
+   File uploader
+   -------------------------------------------------------------------------- */
+div[data-testid="stFileUploader"] {
+    border: 2px dashed var(--border-medium);
+    border-radius: 10px;
+    padding: 1rem;
+    transition: border-color 0.2s;
+}
+
+div[data-testid="stFileUploader"]:hover {
+    border-color: var(--primary-blue-lighter);
+}
+
+/* --------------------------------------------------------------------------
+   Tooltip and help icons
+   -------------------------------------------------------------------------- */
+.stTooltipIcon {
+    color: var(--primary-blue-lighter);
+}
+
+/* --------------------------------------------------------------------------
+   Progress columns in dataframe
+   -------------------------------------------------------------------------- */
+div[data-testid="stDataFrame"] .stProgress > div > div {
+    background-color: var(--primary-blue-lighter);
+    border-radius: 4px;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive adjustments
+   -------------------------------------------------------------------------- */
+@media (max-width: 768px) {
+    .main-header h1 {
+        font-size: 1.6rem;
+    }
+
+    .main-header .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .main-header .intro {
+        font-size: 0.8rem;
+    }
+
+    div[data-testid="stMetric"] {
+        padding: 0.75rem;
+    }
+
+    div[data-testid="stMetric"] div[data-testid="stMetricValue"] {
+        font-size: 1.2rem;
+    }
+}
+
+/* --------------------------------------------------------------------------
+   Print-friendly
+   -------------------------------------------------------------------------- */
+@media print {
+    section[data-testid="stSidebar"] {
+        display: none;
+    }
+
+    .stApp {
+        background-color: #ffffff;
+    }
+}

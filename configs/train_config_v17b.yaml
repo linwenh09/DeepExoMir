@@ -1,0 +1,50 @@
+# DeepExoMir Training Configuration -- v17b
+# v16a base + lower LR (5e-5) + stronger weight decay (1e-3)
+
+data:
+  data_dir: data/processed
+  batch_size: 256
+  num_workers: 0
+
+training:
+  model_version: v8
+  epochs: 60
+  batch_size: 256
+  accumulation_steps: 8
+  learning_rate: 5.0e-5
+  weight_decay: 1.0e-3
+  warmup_steps: 1500
+  scheduler: cosine_with_warmup
+  gradient_clip_norm: 1.0
+  backbone_lr_scale: 0.1
+  ema_decay: 0.9995
+  mixup_alpha: 0.2
+  mixup_prob: 0.5
+
+loss:
+  type: focal
+  gamma: 1.0
+  alpha: 0.5
+  label_smoothing: 0.05
+
+regularization:
+  dropout: 0.2
+  attention_dropout: 0.15
+
+early_stopping:
+  patience: 20
+  monitor: val_auc
+  min_delta: 0.0005
+  mode: max
+
+mixed_precision:
+  enabled: true
+  dtype: float16
+
+checkpointing:
+  save_top_k: 3
+  checkpoint_dir: checkpoints/v17b/
+
+logging:
+  tensorboard_dir: logs/v17b/
+  log_every_n_steps: 50

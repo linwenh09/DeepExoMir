@@ -1,0 +1,55 @@
+# DeepExoMir Training Configuration -- Model v8 FAST
+# Optimized for RTX 5090 (32 GB VRAM) + PCA-256 embeddings (~30 GB RAM)
+#
+# Key changes from train_config_v8.yaml:
+#   - batch_size: 64 -> 256 (GPU was only 11% utilized with bs=64)
+#   - accumulation_steps: 32 -> 8 (same effective batch = 2048)
+#   - num_workers: 0 (Windows multiprocessing can't pickle large Dataset)
+#   - PCA-256 embeddings fit in RAM (31 GB << 126 GB), no page faults
+#   - Expected speedup: ~3-5x (4h/epoch -> ~50-80min/epoch)
+
+data:
+  data_dir: data/processed
+  batch_size: 256             # FAST: 4x larger (GPU was 89% idle)
+  num_workers: 0              # Windows pickle limit: Dataset too large for workers
+
+training:
+  model_version: v8
+  epochs: 60
+  batch_size: 256             # FAST: 4x larger
+  accumulation_steps: 8       # FAST: reduced from 32, effective batch still 2048
+  learning_rate: 1.0e-4
+  weight_decay: 5.0e-4
+  warmup_steps: 1000
+  scheduler: cosine_with_warmup
+  gradient_clip_norm: 1.0
+  backbone_lr_scale: 0.1
+  ema_decay: 0.9995
+
+loss:
+  type: focal
+  gamma: 1.0
+  alpha: 0.5
+  label_smoothing: 0.05
+
+regularization:
+  dropout: 0.2
+  attention_dropout: 0.15
+
+early_stopping:
+  patience: 20
+  monitor: val_auc
+  min_delta: 0.0005
+  mode: max
+
+mixed_precision:
+  enabled: true
+  dtype: float16
+
+checkpointing:
+  save_top_k: 3
+  checkpoint_dir: checkpoints/v8_fast/
+
+logging:
+  tensorboard_dir: logs/v8_fast/
+  log_every_n_steps: 50

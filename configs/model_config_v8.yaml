@@ -1,0 +1,65 @@
+# DeepExoMir Model Configuration -- Model v8 (Unified)
+# Key changes from v7:
+#   - HybridEncoder: 8-layer BiConvGate + Cross-Attention (replaces pure CrossAttention)
+#   - MoE Classifier: 4 experts, top-2 routing (replaces simple MLP head)
+#   - Multi-task heads: seed type, MFE regression, binding position
+#   - EvoAug: RNA-specific data augmentation
+#   - Per-token target embeddings (not just mean-pooled)
+#   - max_target_len kept at 50 (same as v7)
+#   - 22.2M trainable parameters (vs v7: ~18.5M)
+
+backbone:
+  name: "multimolecule/rinalmo-giga"
+  embed_dim: 1280
+  freeze: true
+  load_backbone: false  # v8: use pre-computed per-token embeddings for both miRNA and target
+
+model:
+  d_model: 256
+  n_heads: 8
+  d_ff: 1024
+  n_layers: 8              # v8: 8 hybrid layers (6 BiConvGate + 2 CrossAttn)
+  d_conv: 4                # v8: BiConvGate convolution kernel size (Mamba default)
+  expand: 2                # v8: BiConvGate expansion factor
+  cross_attn_every: 3      # v8: cross-attention at layers 2 and 5
+  dropout: 0.2             # v8: reduced from 0.3 (EvoAug provides extra regularization)
+  attention_dropout: 0.15  # v8: slightly reduced
+  drop_path_rate: 0.1      # v8: stochastic depth rate
+  use_swiglu: true         # v8: SwiGLU FFN in cross-attention blocks
+  max_mirna_len: 30
+  max_target_len: 50
+  backbone_feat_dim: 256
+
+structural:
+  bp_cnn_out: 128
+  struct_mlp_in: 8
+  struct_mlp_out: 64
+
+contact_map:
+  enabled: true
+  proj_dim: 32
+  out_dim: 128
+
+# v8: NEW -- MoE Classifier
+classifier:
+  type: moe                # v8: mixture of experts (vs v7: simple MLP)
+  n_experts: 4             # 4 specialized experts
+  top_k: 2                 # route to top-2 experts per sample
+  hidden_dim: 256          # expert hidden dimension
+  n_classes: 2
+  platt_scaling: true
+
+# v8: NEW -- Multi-task learning
+multitask:
+  enabled: true
+  w_seed: 0.3              # seed type classification weight
+  w_mfe: 0.2               # MFE regression weight
+  w_position: 0.2          # binding position weight
+  w_load_balance: 0.01     # MoE load balancing weight
+
+# v8: NEW -- EvoAug data augmentation
+augmentation:
+  enabled: true
+  p_augment: 0.3           # probability of augmenting each sample
+  mutation_rate: 0.05      # per-nucleotide mutation rate
+  struct_noise_std: 0.1    # Gaussian noise for structural features

@@ -1,0 +1,41 @@
+# DeepExoMir Model Configuration -- Model v7
+# Key changes from v6:
+#   - Contact Map CNN (diff+mul features from TEC-miTarget)
+#   - Structural features expanded from 6 to 8 (au_content, seed_duplex_mfe)
+#   - Structural features ENABLED during training (pre-computed)
+#   - Classifier input: 960 to 1088 (+128 contact map)
+
+backbone:
+  name: "multimolecule/rinalmo-giga"
+  embed_dim: 1280
+  freeze: true
+  load_backbone: true  # Load live backbone for per-token target cross-attention
+
+model:
+  d_model: 256
+  n_heads: 8
+  d_ff: 1024
+  n_cross_layers: 8        # same as v6
+  dropout: 0.3              # same as v6
+  attention_dropout: 0.2    # same as v6
+  drop_path_rate: 0.15      # same as v6
+  use_swiglu: true          # same as v6
+  max_mirna_len: 30
+  max_target_len: 50
+  backbone_feat_dim: 256
+
+structural:
+  bp_cnn_out: 128
+  struct_mlp_in: 8          # v7: expanded from 6 (added au_content, seed_duplex_mfe)
+  struct_mlp_out: 64
+
+# v7: NEW -- Contact Map CNN (from TEC-miTarget)
+contact_map:
+  enabled: true
+  proj_dim: 32              # project d_model to 32 for memory efficiency
+  out_dim: 128              # output feature dimension
+
+classifier:
+  hidden_dims: [256, 128]
+  n_classes: 2
+  platt_scaling: true
