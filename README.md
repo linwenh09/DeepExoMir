@@ -23,7 +23,7 @@ Evaluated on the [miRBench](https://github.com/katarinagresova/miRBench) benchma
 
 ```bash
 # Clone the repository
-git clone https://github.com/[username]/DeepExoMir.git
+git clone https://github.com/linwenh09/DeepExoMir.git
 cd DeepExoMir
 
 # Create conda environment

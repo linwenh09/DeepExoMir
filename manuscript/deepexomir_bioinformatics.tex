@@ -34,7 +34,7 @@
 \abstract{
 \textbf{Motivation:} Accurate prediction of microRNA (miRNA) targets is essential for understanding post-transcriptional gene regulation, yet existing methods are limited by reliance on hand-crafted features or architectures that fail to model the structural topology of miRNA-target duplexes. Recent benchmarking with experimentally validated CLIP-seq negatives has revealed that many published methods perform substantially worse than reported with random negatives.\\
 \textbf{Results:} We present DeepExoMir, a hybrid deep learning framework that integrates frozen RiNALMo RNA language model embeddings with a novel duplex-aware architecture. The model employs an 8-layer hybrid encoder alternating bidirectional convolution gating with cross-attention, interaction-aware pooling, and a duplex graph attention network (DuplexGAT) that explicitly models the miRNA-target duplex as a nucleotide-level graph. Incorporating 33 biologically informed features spanning thermodynamic stability, evolutionary conservation, and RNA secondary structure, DeepExoMir achieves a mean AU-PRC of 0.86 across three independent miRBench test datasets, surpassing the best retrained CNN baseline (0.82) by +0.04. Systematic ablation across 22 model versions reveals that evolutionary conservation contributes 52\% of total feature importance. Attention analysis confirms autonomous learning of seed region specificity (1.16-fold enrichment) and 3$'$ compensatory pairing patterns.\\
-\textbf{Availability and Implementation:} Source code and pre-trained models are available at [GitHub URL] and archived at Zenodo [DOI].\\
+\textbf{Availability and Implementation:} Source code and pre-trained models are available at https://github.com/linwenh09/DeepExoMir and archived at Zenodo https://doi.org/10.5281/zenodo.19216306.\\
 \textbf{Contact:} BryceLin@bionetTX.com\\
 \textbf{Supplementary information:} Supplementary data are available at \textit{Bioinformatics} online.}
 
@@ -194,7 +194,7 @@ A critical aspect of our evaluation is the use of miRBench CLIP-seq negatives ra
 
 DeepExoMir achieves state-of-the-art performance on the miRBench benchmark (mean AU-PRC 0.86), surpassing the best retrained CNN baseline (0.82) by integrating RNA language model embeddings, a hybrid encoder, duplex graph attention, and 33 biologically curated features. Ablation across 22 model versions quantifies each component's contribution, revealing that evolutionary conservation alone accounts for 52\% of feature importance. Attention analysis confirms that the model autonomously learns biologically meaningful targeting patterns.
 
-Several directions for future work are promising: cross-species evaluation on conserved miRNA families, integration of full-length mRNA structure predictions from LinearFold \citep{huang2019}, extension of DuplexGAT to non-canonical interactions \citep{shin2010}, and combination with exosome-specific miRNA profiles for tissue-specific prediction \citep{valadi2007,obrien2020}. DeepExoMir is freely available at [GitHub URL].
+Several directions for future work are promising: cross-species evaluation on conserved miRNA families, integration of full-length mRNA structure predictions from LinearFold \citep{huang2019}, extension of DuplexGAT to non-canonical interactions \citep{shin2010}, and combination with exosome-specific miRNA profiles for tissue-specific prediction \citep{valadi2007,obrien2020}. DeepExoMir is freely available at https://github.com/linwenh09/DeepExoMir.
 
 \section*{Acknowledgements}
 
@@ -210,7 +210,7 @@ None declared.
 
 \section*{Data Availability}
 
-The miRBench benchmark datasets are available through the miRBench Python package \citep{sammut2025}. Training data are derived from the miRBench standardized training splits of AGO2 CLIP-seq datasets. Pre-trained model checkpoints, source code, and analysis scripts are deposited at Zenodo [DOI] and maintained at [GitHub URL].
+The miRBench benchmark datasets are available through the miRBench Python package \citep{sammut2025}. Training data are derived from the miRBench standardized training splits of AGO2 CLIP-seq datasets. Pre-trained model checkpoints, source code, and analysis scripts are deposited at Zenodo https://doi.org/10.5281/zenodo.19216306 and maintained at https://github.com/linwenh09/DeepExoMir.
 
 \bibliographystyle{natbib}
 

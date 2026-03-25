@@ -13,7 +13,7 @@ Wen-Hsien Lin^1,*^
 
 **Results:** We present DeepExoMir, a hybrid deep learning framework that integrates frozen RiNALMo RNA language model embeddings with a novel duplex-aware architecture. The model employs an 8-layer hybrid encoder alternating bidirectional convolution gating with cross-attention, interaction-aware pooling, and a duplex graph attention network (DuplexGAT) that explicitly models the miRNA-target duplex as a nucleotide-level graph. Incorporating 33 biologically informed features spanning thermodynamic stability, evolutionary conservation, and RNA secondary structure, DeepExoMir achieves a mean AU-PRC of 0.8551 across three independent miRBench test datasets, surpassing the best retrained CNN baseline (0.82) by +0.04. Systematic ablation across 22 model versions reveals that evolutionary conservation contributes 52% of total feature importance. Attention analysis confirms autonomous learning of seed region specificity (1.16-fold enrichment) and 3' compensatory pairing patterns.
 
-**Availability and Implementation:** Source code and pre-trained models are available at [GitHub URL] and archived at Zenodo [DOI].
+**Availability and Implementation:** Source code and pre-trained models are available at https://github.com/linwenh09/DeepExoMir and archived at Zenodo https://doi.org/10.5281/zenodo.19216306.
 
 **Contact:** BryceLin@bionetTX.com
 
@@ -173,7 +173,7 @@ DeepExoMir achieves state-of-the-art performance on the miRBench benchmark (mean
 
 Several directions for future work are promising. Cross-species evaluation on conserved miRNA families (e.g., let-7, miR-17/92 cluster) could validate the generalizability of learned representations. Integration of full-length mRNA secondary structure predictions from tools such as LinearFold (32) may improve target site accessibility modeling. The DuplexGAT framework could be extended to model non-canonical interactions including centered sites and bulge-mediated targeting (23). Finally, combining DeepExoMir with exosome-specific miRNA expression profiles could enable tissue-specific target prediction for precision medicine applications (33,34).
 
-DeepExoMir is freely available at [GitHub URL].
+DeepExoMir is freely available at https://github.com/linwenh09/DeepExoMir.
 
 ## Acknowledgements
 
@@ -189,7 +189,7 @@ None declared.
 
 ## Data Availability
 
-The miRBench benchmark datasets are available through the miRBench Python package (12). Training data are derived from the miRBench standardized training splits of AGO2 CLIP-seq datasets. Pre-trained model checkpoints, source code, and analysis scripts are deposited at Zenodo [DOI] and maintained at [GitHub URL].
+The miRBench benchmark datasets are available through the miRBench Python package (12). Training data are derived from the miRBench standardized training splits of AGO2 CLIP-seq datasets. Pre-trained model checkpoints, source code, and analysis scripts are deposited at Zenodo https://doi.org/10.5281/zenodo.19216306 and maintained at https://github.com/linwenh09/DeepExoMir.
 
 ## References
 
