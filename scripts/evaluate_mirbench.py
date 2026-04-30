@@ -211,6 +211,10 @@ def main():
                         help="Use actual RiNALMo backbone for embedding (slower but accurate)")
     parser.add_argument("--datasets", nargs="+",
                         default=["AGO2_CLASH_Hejret2023", "AGO2_eCLIP_Klimentova2022", "AGO2_eCLIP_Manakov2022"])
+    parser.add_argument("--save-scores-dir", default=None,
+                        help="If set, save per-sample probabilities as {dir}/{dataset}_test_DeepExoMir_v19.npy")
+    parser.add_argument("--score-label", default="DeepExoMir_v19",
+                        help="Suffix for saved per-sample score files (default: DeepExoMir_v19)")
     args = parser.parse_args()
 
     device = torch.device(args.device if torch.cuda.is_available() else "cpu")
@@ -309,6 +313,14 @@ def main():
 
         elapsed = time.time() - t0
         all_probs = np.concatenate(all_probs)
+
+        # Optionally save per-sample scores (for paired bootstrap vs baselines)
+        if args.save_scores_dir:
+            save_dir = Path(args.save_scores_dir)
+            save_dir.mkdir(parents=True, exist_ok=True)
+            out_file = save_dir / f"{ds_name}_test_{args.score_label}.npy"
+            np.save(out_file, all_probs)
+            logger.info("  Saved per-sample scores: %s", out_file)
 
         # Compute metrics
         auprc = average_precision_score(labels, all_probs)

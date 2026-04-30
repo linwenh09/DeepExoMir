@@ -1,10 +1,14 @@
-# Data (too large for git)
-data/
+# Data (too large for git) -- top-level data/ only, NOT deepexomir/data/ package
+/data/
 *.npy
 *.npz
 *.parquet
 *.bw
 *.bigwig
+
+# But always track the deepexomir.data Python package
+!deepexomir/data/
+!deepexomir/data/**/*.py
 
 # Model checkpoints (too large)
 checkpoints/

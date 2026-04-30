@@ -175,6 +175,11 @@ def main() -> None:
         print(f"    Run: python scripts/precompute_structural_features.py")
         print(f"    Structural features will be zeros (reduces accuracy).")
 
+    # Signal ablation for Phase-2.3 retrain-from-scratch studies
+    signal_ablation = train_config.get("signal_ablation", None)
+    if signal_ablation:
+        print(f"  SIGNAL ABLATION ACTIVE: {signal_ablation}")
+
     train_loader = create_dataloader(
         parquet_path=train_path,
         batch_size=batch_size,
@@ -184,6 +189,7 @@ def main() -> None:
         skip_structural=not has_precomputed_struct,  # v7: use if available
         skip_bp_matrix=True,  # model computes on GPU
         embeddings_dir=embeddings_dir,
+        signal_ablation=signal_ablation,
         persistent_workers=num_workers > 0,
     )
     val_loader = create_dataloader(
@@ -195,6 +201,7 @@ def main() -> None:
         skip_structural=not has_precomputed_struct,  # v7: use if available
         skip_bp_matrix=True,  # model computes on GPU
         embeddings_dir=embeddings_dir,
+        signal_ablation=signal_ablation,
         persistent_workers=num_workers > 0,
     )
     print(f"  Train: {len(train_loader.dataset)} samples, {len(train_loader)} batches")

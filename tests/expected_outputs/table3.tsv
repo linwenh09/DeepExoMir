@@ -1,0 +1,10 @@
+ablation	dataset	main_AUPRC	ablated_AUPRC	delta_main_minus_ablated	ci_low	ci_high	p_two_sided	sig
+v19_noRNALM	AGO2_CLASH_Hejret2023	0.8484	0.8139	0.0345	0.0144	0.0561	0.0014	**
+v19_noConservation	AGO2_CLASH_Hejret2023	0.8484	0.8417	0.0066	-0.0071	0.0207	0.3618	n.s.
+v19_noStructure	AGO2_CLASH_Hejret2023	0.8484	0.8660	-0.0176	-0.0380	0.0013	0.0696	n.s.
+v19_noRNALM	AGO2_eCLIP_Klimentova2022	0.8679	0.8430	0.0249	0.0109	0.0392	0.0002	***
+v19_noConservation	AGO2_eCLIP_Klimentova2022	0.8679	0.8642	0.0036	-0.0035	0.0108	0.3128	n.s.
+v19_noStructure	AGO2_eCLIP_Klimentova2022	0.8679	0.8707	-0.0027	-0.0142	0.0087	0.6466	n.s.
+v19_noRNALM	AGO2_eCLIP_Manakov2022	0.8482	0.8225	0.0257	0.0248	0.0267	0.0005	***
+v19_noConservation	AGO2_eCLIP_Manakov2022	0.8482	0.8451	0.0031	0.0025	0.0037	0.0005	***
+v19_noStructure	AGO2_eCLIP_Manakov2022	0.8482	0.8526	-0.0044	-0.0051	-0.0037	0.0005	***
