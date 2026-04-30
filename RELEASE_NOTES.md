@@ -1,8 +1,8 @@
 # DeepExoMir release notes
 
-## v0.2.0 (2026-04-29) -- GPB submission snapshot
+## v0.2.0 (2026-04-30) -- IJMS submission snapshot
 
-This is the persistent archive that pairs with the GPB submission of
+This is the persistent archive that pairs with the IJMS submission of
 "DeepExoMir: A Reproducible RNA Language Model Framework for
 CLIP-seq-Supported MicroRNA Target-Site Prioritization".  It supersedes
 v0.1.0 (2026-03-25, Zenodo deposit on which the original BIB submission
@@ -17,9 +17,12 @@ the Figure 10 calibration analysis end-to-end.
   `scripts/reproduce_table3.py`, and `scripts/calibration_analysis.py`.
 * **Pytest smoke tests** (`tests/test_reproduce_table3.py`,
   `tests/test_calibration.py`) with pinned reference outputs under
-  `tests/expected_outputs/`.  Reviewers can run `pytest tests/` end-to-end
-  on a CPU-only laptop in roughly three minutes -- no checkpoint or
-  RiNALMo download required for the smoke tier.
+  `tests/expected_outputs/`.  Reviewers can run
+  `pytest tests/test_reproduce_table3.py tests/test_calibration.py -v`
+  end-to-end on a CPU-only laptop in roughly three minutes -- no
+  checkpoint or RiNALMo download required for the smoke tier.  A
+  `tests/conftest.py` skips GPU-only tests automatically when CUDA is
+  unavailable, so `pytest tests/` (without arguments) is also safe.
 * **Per-sample probability score files** for v19 main, DeepExoMir-Lite,
   the three retrain ablations, and eight miRBench baselines on each of
   the three CLIP-seq test sets, shipped as
@@ -82,7 +85,7 @@ the Figure 10 calibration analysis end-to-end.
   title   = {{DeepExoMir}: A Reproducible RNA Language Model Framework
              for CLIP-seq-Supported MicroRNA Target-Site Prioritization},
   author  = {Lin, Wen-Hsien and Hsiung, Chia-Ni and Lien, Wen-Yu and Sieber, Martin},
-  journal = {(under review at Genomics, Proteomics \& Bioinformatics)},
+  journal = {(under review at International Journal of Molecular Sciences)},
   year    = {2026},
   doi     = {10.5281/zenodo.19216306}
 }

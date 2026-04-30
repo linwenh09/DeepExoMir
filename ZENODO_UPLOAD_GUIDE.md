@@ -1,4 +1,4 @@
-# Zenodo upload guide -- DeepExoMir v0.2.0 (GPB submission)
+# Zenodo upload guide -- DeepExoMir v0.2.0 (IJMS submission)
 
 Step-by-step instructions for replacing the existing Zenodo deposit
 (DOI 10.5281/zenodo.19216306) with the new v0.2.0 release.  This is a
@@ -72,7 +72,7 @@ Change from `1.0` (or whatever v0.1.0 used) to `0.2.0`.
 Replace with the following text (copy verbatim):
 
 ```
-DeepExoMir v0.2.0 -- the GPB submission snapshot for "DeepExoMir: A
+DeepExoMir v0.2.0 -- the IJMS submission snapshot for "DeepExoMir: A
 Reproducible RNA Language Model Framework for CLIP-seq-Supported
 MicroRNA Target-Site Prioritization".  Supersedes v0.1.0 (the original
 BIB submission deposit) by adding:
@@ -137,7 +137,7 @@ The **concept DOI** (always-latest) is shown in the right sidebar as
 The manuscript's BibTeX entry already uses the concept DOI, so no edit
 is needed there.
 
-If the GPB submission system requires a "Data availability" URL, use
+If the IJMS SUSY submission system requires a "Data availability" URL, use
 either:
 
 * the concept-record URL: `https://zenodo.org/records/19216306`

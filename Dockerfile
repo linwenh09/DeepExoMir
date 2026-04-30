@@ -57,6 +57,7 @@ COPY configs        /workspace/configs
 COPY manuscript/BiB_submission/baseline_scores \
                     /workspace/manuscript/BiB_submission/baseline_scores
 
-# Default: run the smoke tests.  Override with `bash` for an
-# interactive shell.
-CMD ["pytest", "tests/", "-v"]
+# Default: run only the two smoke tests.  Other tests in tests/ require
+# CUDA-enabled torch and the full training data, neither of which ship
+# in this image.  Override with `bash` for an interactive shell.
+CMD ["pytest", "tests/test_reproduce_table3.py", "tests/test_calibration.py", "-v"]
