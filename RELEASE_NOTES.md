@@ -1,15 +1,15 @@
 # DeepExoMir release notes
 
-## v0.2.0 (2026-04-30) -- IJMS submission snapshot
+## v1.1.0 (2026-04-30) -- IJMS submission snapshot
 
 This is the persistent archive that pairs with the IJMS submission of
 "DeepExoMir: A Reproducible RNA Language Model Framework for
 CLIP-seq-Supported MicroRNA Target-Site Prioritization".  It supersedes
-v0.1.0 (2026-03-25, Zenodo deposit on which the original BIB submission
+v1.0.0 (2026-03-25, Zenodo deposit on which the original BIB submission
 was based) and contains everything needed to reproduce Tables 1, 3 and
 the Figure 10 calibration analysis end-to-end.
 
-### What is new since v0.1.0
+### What is new since v1.0.0
 
 * **Public reproducibility surface** -- new `deepexomir.config`,
   `deepexomir.predict`, and `deepexomir.benchmark` modules, plus the

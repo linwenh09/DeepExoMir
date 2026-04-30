@@ -83,8 +83,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "--output", type=Path,
-        default=REPO / "deepexomir_zenodo_v0.2.0.zip",
-        help="output zip path (default: deepexomir_zenodo_v0.2.0.zip)",
+        default=REPO / "deepexomir_zenodo_v1.1.0.zip",
+        help="output zip path (default: deepexomir_zenodo_v1.1.0.zip)",
     )
     args = parser.parse_args()
 

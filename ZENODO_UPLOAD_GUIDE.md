@@ -1,37 +1,37 @@
-# Zenodo upload guide -- DeepExoMir v0.2.0 (IJMS submission)
+# Zenodo upload guide -- DeepExoMir v1.1.0 (IJMS submission)
 
 Step-by-step instructions for replacing the existing Zenodo deposit
-(DOI 10.5281/zenodo.19216306) with the new v0.2.0 release.  This is a
+(DOI 10.5281/zenodo.19216306) with the new v1.1.0 release.  This is a
 **user action** -- it requires your Zenodo login.
 
 ## TL;DR
 
 1. Build the new zip (already done by `scripts/build_zenodo_release.py`):
-   `deepexomir_zenodo_v0.2.0.zip` at the repo root.
+   `deepexomir_zenodo_v1.1.0.zip` at the repo root.
 2. Log in to <https://zenodo.org>.
 3. Open the existing record: <https://zenodo.org/records/19216306>.
 4. Click **New version** (top right, under "Versions" panel).
-5. Delete the old zip from the new draft and upload `deepexomir_zenodo_v0.2.0.zip`.
-6. Update version field to `0.2.0`, paste the new description (below).
+5. Delete the old zip from the new draft and upload `deepexomir_zenodo_v1.1.0.zip`.
+6. Update version field to `1.1.0`, paste the new description (below).
 7. Click **Save**, then **Publish**.
 
-Publishing creates a **new DOI** for v0.2.0 (e.g. `10.5281/zenodo.NNNNNN`).
-The original DOI (`10.5281/zenodo.19216306`) keeps resolving to v0.1.0 --
+Publishing creates a **new DOI** for v1.1.0 (e.g. `10.5281/zenodo.NNNNNN`).
+The original DOI (`10.5281/zenodo.19216306`) keeps resolving to v1.0.0 --
 **this is fine**.  The "concept DOI" (which the manuscript should cite if
 you want "always the latest version") is the same across all versions
 and is shown in the Zenodo record's right-hand sidebar.
 
 The manuscript currently cites the **concept DOI** equivalent
 `10.5281/zenodo.19216306`, which Zenodo will automatically redirect to
-the latest version after publishing v0.2.0.  No manuscript edit needed.
+the latest version after publishing v1.1.0.  No manuscript edit needed.
 
 ## Detailed walk-through
 
 ### 1. Confirm the build
 
 ```bash
-ls -lh deepexomir_zenodo_v0.2.0.zip
-unzip -l deepexomir_zenodo_v0.2.0.zip | tail -5
+ls -lh deepexomir_zenodo_v1.1.0.zip
+unzip -l deepexomir_zenodo_v1.1.0.zip | tail -5
 ```
 
 Expected: ~700-800 MB compressed, ~1300 files.  The last line of `unzip
@@ -39,21 +39,21 @@ Expected: ~700-800 MB compressed, ~1300 files.  The last line of `unzip
 
 ### 2. Open the existing record
 
-Go to <https://zenodo.org/records/19216306>.  You should see the v0.1.0
+Go to <https://zenodo.org/records/19216306>.  You should see the v1.0.0
 deposit titled "DeepExoMir: ..." with the existing zip listed.
 
 ### 3. Start a new version
 
 Look for the **"Versions"** panel on the right-hand side of the record.
 Click the **"New version"** button.  Zenodo opens a draft pre-populated
-with all v0.1.0 metadata.
+with all v1.0.0 metadata.
 
 ### 4. Replace the file
 
 In the draft's "Files" section:
 
 * **Delete** the old `deepexomir_zenodo.zip` (click the trash icon).
-* **Upload** the new `deepexomir_zenodo_v0.2.0.zip` (drag & drop, or
+* **Upload** the new `deepexomir_zenodo_v1.1.0.zip` (drag & drop, or
   click the upload area).
 * Wait for the upload to finish -- the progress bar must reach 100% and
   the file must show "Pending" or "Available".  Do not navigate away.
@@ -65,16 +65,16 @@ Most fields stay the same.  The two that change are **Version** and
 
 #### Version
 
-Change from `1.0` (or whatever v0.1.0 used) to `0.2.0`.
+Change from `1.0.0` (the current published version) to `1.1.0`.
 
 #### Description
 
 Replace with the following text (copy verbatim):
 
 ```
-DeepExoMir v0.2.0 -- the IJMS submission snapshot for "DeepExoMir: A
+DeepExoMir v1.1.0 -- the IJMS submission snapshot for "DeepExoMir: A
 Reproducible RNA Language Model Framework for CLIP-seq-Supported
-MicroRNA Target-Site Prioritization".  Supersedes v0.1.0 (the original
+MicroRNA Target-Site Prioritization".  Supersedes v1.0.0 (the original
 BIB submission deposit) by adding:
 
   * a public reproducibility surface (deepexomir.config /
@@ -96,7 +96,7 @@ because it is regenerable from the published RiNALMo-giga checkpoint.
 The miRBench raw parquets are also not mirrored because they are
 available through the miRBench Python package.
 
-See RELEASE_NOTES.md inside the zip for the full diff against v0.1.0.
+See RELEASE_NOTES.md inside the zip for the full diff against v1.0.0.
 
 License: MIT (https://github.com/linwenh09/DeepExoMir/blob/master/LICENSE)
 Active development: https://github.com/linwenh09/DeepExoMir
@@ -106,13 +106,13 @@ Active development: https://github.com/linwenh09/DeepExoMir
 
 * Title -- keep "DeepExoMir: A Reproducible RNA Language Model Framework
   for CLIP-seq-Supported MicroRNA Target-Site Prioritization" (update if
-  the v0.1.0 title was different).
+  the v1.0.0 title was different).
 * Authors -- Wen-Hsien Lin, Chia-Ni Hsiung, Wen-Yu Lien, Martin Sieber.
 * License -- MIT.
 * Resource type -- Software.
 * Keywords -- microRNA, target prediction, RNA language model, CLIP-seq,
   reproducibility, miRBench, RiNALMo.
-* Related identifiers -- if v0.1.0 already has the GitHub URL listed as
+* Related identifiers -- if v1.0.0 already has the GitHub URL listed as
   "is supplemented by", keep it; otherwise add it.
 
 ### 6. Save and publish
@@ -141,7 +141,7 @@ If the IJMS SUSY submission system requires a "Data availability" URL, use
 either:
 
 * the concept-record URL: `https://zenodo.org/records/19216306`
-* or the v0.2.0 record URL: `https://zenodo.org/records/<NNNNNNNN>`
+* or the v1.1.0 record URL: `https://zenodo.org/records/<NNNNNNNN>`
 
 Either works; the concept URL is preferable for long-term citation.
 
