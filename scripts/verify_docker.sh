@@ -8,12 +8,13 @@
 #
 # What it does:
 #   1. Builds the smoke-test image with `docker build -t deepexomir:latest .`
-#   2. Runs `pytest tests/` inside the container.
+#   2. Runs the two smoke tests inside the container:
+#        pytest tests/test_reproduce_table3.py tests/test_calibration.py -v
 #   3. Prints a final PASS/FAIL line.
 #
 # Expected runtime: ~5 min on first build (pip install of numpy, pandas,
 # scikit-learn, matplotlib, pytest).  Re-run is ~3 min (Docker layer cache
-# hits, pytest still runs).
+# hits, smoke tests still run).
 
 set -euo pipefail
 

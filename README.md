@@ -40,19 +40,43 @@ bootstrap p < 0.001 (Table 1 of the paper).
 
 ## Installation
 
+Two paths.  Pick by what you actually want to run:
+
+### Smoke tests only (CPU, ~3 min, no GPU/RNA dependencies)
+
+For reviewers who only want to reproduce the Table 3 retrain-from-scratch
+ablation comparison and the Figure 10 calibration analysis.  These two
+tests do **not** import the `deepexomir` package or torch -- they read
+the per-sample probability score files shipped under
+`manuscript/BiB_submission/baseline_scores/` and call the standalone
+analysis scripts under `scripts/`.
+
 ```bash
 git clone https://github.com/linwenh09/DeepExoMir.git
 cd DeepExoMir
+pip install numpy pandas scikit-learn matplotlib pyyaml pytest
+pytest tests/                # ~3 min CPU; conftest.py skips GPU-only tests
+```
 
-# Either: conda environment (recommended for GPU work)
+If you have already created a project venv and want the same dependency
+list as a single extras install, use `pip install -e ".[smoke]" --no-deps`
+followed by `pip install numpy pandas scikit-learn matplotlib pyyaml pytest`.
+
+### Full install (GPU recommended; required for Table 1 re-evaluation)
+
+```bash
 conda create -n deepexomir python=3.11
 conda activate deepexomir
-pip install -e .
+pip install -e .            # full dependency set: torch, transformers, multimolecule, biopython, ...
 pip install miRBench
+```
 
-# Or: Docker container (CPU and GPU)
+Or via the bundled Docker image (CPU smoke build only — no torch/CUDA):
+
+```bash
 docker build -t deepexomir:latest .
-docker run --rm -it --gpus all -v $(pwd):/workspace deepexomir:latest bash
+docker run --rm -v $(pwd):/workspace -w /workspace deepexomir:latest
+# default CMD runs the smoke tests inside the container
 ```
 
 Trained checkpoints are released at

@@ -45,9 +45,9 @@ MANIFEST: list[tuple[Path, str]] = [
     (REPO / "checkpoints" / "v19_noRNALM" / "checkpoint_epoch042_val_auc_0.8410.pt",
      "checkpoints/v19_noRNALM/checkpoint_epoch042_val_auc_0.8410.pt"),
 
-    # --- manuscript-side reproducibility surface ------------------------
-    (REPO / "manuscript" / "BiB_submission" / "REPRODUCIBILITY.md",
-     "REPRODUCIBILITY.md"),
+    # --- reproducibility documentation ----------------------------------
+    (REPO / "REPRODUCIBILITY.md",   "REPRODUCIBILITY.md"),
+    (REPO / "ZENODO_UPLOAD_GUIDE.md", "ZENODO_UPLOAD_GUIDE.md"),
 ]
 
 # Whole directory trees to include (excluding pycache / pyc / large
