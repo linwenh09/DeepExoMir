@@ -1,0 +1,76 @@
+# .dockerignore -- restrict the build context to only what the
+# smoke-test Dockerfile actually needs.  The repo can balloon to >300 GB
+# locally with raw datasets, embeddings caches, and training
+# checkpoints; we never want any of that to enter the build context.
+
+# Heavy artefacts
+checkpoints/
+embeddings_cache/
+embeddings_cache_pca256/
+data/
+results/
+logs/
+**/*.log
+*.pt
+*.pth
+*.ckpt
+*.npz
+*.parquet
+
+# Local dev / editor noise
+.git/
+.venv/
+.env
+.idea/
+.vscode/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+build/
+dist/
+
+# Notebooks (the Quickstart is for host-side use; not needed for smoke
+# tests inside the container)
+notebooks/
+
+# Manuscript LaTeX build output and pre-built archive
+manuscript/**/*.aux
+manuscript/**/*.bbl
+manuscript/**/*.blg
+manuscript/**/*.fdb_latexmk
+manuscript/**/*.fls
+manuscript/**/*.log
+manuscript/**/*.out
+manuscript/**/*.synctex.gz
+manuscript/**/*.toc
+deepexomir_zenodo.zip
+
+# Streamlit demo (not part of the reproducibility surface)
+app/
+
+# Misc one-off scripts
+count_*.py
+fix_*.py
+renumber_*.py
+reorder_*.py
+refqc.py
+verify_setup.py
+training_monitor.log
+setup_env.*
+
+# Don't keep the Dockerfile or this file inside the image
+Dockerfile
+.dockerignore
+
+# The smoke tests need only the baseline_scores subset of manuscript/.
+# We allow that subset back in via a positive include pattern below.
+manuscript/*
+!manuscript/BiB_submission/
+manuscript/BiB_submission/*
+!manuscript/BiB_submission/baseline_scores/
